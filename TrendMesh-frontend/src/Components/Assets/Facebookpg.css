@@ -1,0 +1,666 @@
+.fb-wrapper {
+  width: 100%;
+  height: 90%;
+  margin-top: 15px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #04408f;
+  border-radius: 25px;
+  padding: 30px;
+  color: #000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Header */
+.fb-header {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 15px;
+  margin-bottom: 32px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #1877f2, #074ca7, #074ca7);
+  color: white;
+}
+
+.fb-header h3 {
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.fb-header p {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #d5d5f1;
+}
+.fb-icon {
+  width: 60px;
+  height: 60px;
+}
+
+/* Stats Container (Instagram jesa layout) */
+.fb-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0 5px 0; /* Margin niche se kam kar diya */
+  width: 100%;
+  align-items: stretch;
+}
+
+/* FB Box Styling */
+.fb-stats-box {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 340px;
+  height: 350px; /* Sizing same as Insta */
+  display: flex;
+  flex-direction: column;
+}
+
+.fb-stats-box h3 {
+  font-size: 22px !important;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #1c1e21;
+}
+
+.performance-chart {
+  flex: 1.5; /* Bar chart ko thora wide rakha hai */
+}
+
+/* Chart Container */
+.chart-container {
+  flex: 1;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Legend Styling */
+.chart-legend,
+.sentiment-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #f0f2f5;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+/* Facebook Specific Colors */
+.reach-fb {
+  background-color: #5b8def;
+}
+.likes-fb {
+  background-color: #9b6bff;
+}
+.comments-fb {
+  background-color: #ff8a65;
+}
+
+.pos-fb {
+  background-color: #4ade80;
+}
+.neu-fb {
+  background-color: #94a3b8;
+}
+.neg-fb {
+  background-color: #f87171;
+}
+
+.chart-legend p,
+.sentiment-legend div {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b4f56;
+  display: flex;
+  align-items: center;
+}
+
+/* Facebook Post Section Styles (Instagram Lookalike) */
+.fb-post-section {
+  background: #f7f7f7;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  color: white;
+}
+.fb-post-section {
+  background: rgba(31, 123, 244, 0.244);
+  border: 1px solid #1da1f2;
+}
+
+.fb-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 14px;
+}
+.fb-post-header h3 {
+  font-size: 22px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Grid layout for posts */
+.fb-post-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Individual post cards */
+.fb-post-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+  height: 220px; /* Same as your Insta card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.fb-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-card-media {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.fb-placeholder-media {
+  width: 100%;
+  height: 100%;
+  background: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+
+/* Post Text (Caption) */
+.post-card-content p {
+  font-size: 16px;
+  color: #444;
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+/* Facebook Post Cards - Image & Video Styling (Insta Style) */
+.fb-post-card img,
+.fb-post-card video {
+  width: 100%;
+  height: 110px; /* Instagram card jaisi height */
+  object-fit: cover; /* Image stretch nahi hogi, perfectly fit hogi */
+  border-radius: 6px; /* Corners round karne ke liye */
+  margin-bottom: 8px;
+}
+
+/* Post text */
+/*.fb-post-card p {
+  font-size: 16px;
+  flex-grow: 1;
+ display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}*/
+
+/* Post images */
+.fb-post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Post timestamp */
+.fb-post-card small {
+  font-size: 11px;
+  color: #555;
+}
+
+/* Empty state */
+.fb-no-posts {
+  text-align: center;
+  padding: 25px;
+}
+
+.no-posts-icon {
+  width: 30px;
+  opacity: 0.7;
+}
+
+/* Date Stamp */
+.post-date {
+  font-size: 12px;
+  color: #888;
+  margin-top: auto;
+}
+
+/* Post Count Badge */
+.post-count {
+  background: #1877f2;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .fb-post-list {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 posts for slightly smaller screens */
+  }
+}
+
+@media (max-width: 1200px) {
+  .fb-post-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .fb-post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .fb-post-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Facebook Pages Section */
+.fb-page-section {
+  /*background: #f7f7f7;*/
+  border-radius: 25px;
+  margin-top: 35px;
+  padding: 25px;
+  color: white;
+  background: rgba(31, 123, 244, 0.244);
+  border: 1px solid #1da1f2;
+}
+
+.fb-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 5px;
+}
+.fb-page-header h3 {
+  font-size: 22px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.page-count {
+  background: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+
+/* Empty State */
+.fb-no-pages {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.no-pages-icon {
+  width: 55px;
+  opacity: 0.7;
+}
+
+/* Grid layout for pages */
+.fb-page-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* Page Card */
+.fb-page-card {
+  background: white;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.fb-page-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Page Image */
+.fb-page-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 2px solid #1877f2;
+}
+
+/* Page Text */
+.fb-page-card h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #1c1e21;
+}
+
+.page-category {
+  font-size: 13px;
+  color: #65676b;
+  margin-bottom: 12px;
+}
+
+/* Manage Button */
+.manage-page-btn {
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.manage-page-btn:hover {
+  background: #166fe5;
+}
+.post-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  background: white;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.close-btn {
+  background: #ff5c5c;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  float: right;
+}
+
+.post-detail-top img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.post-detail-stats {
+  margin-top: 20px;
+}
+
+.comment-item {
+  border-top: 1px solid #eee;
+  padding: 8px 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Sidebar Container */
+/* Sidebar Container */
+.post-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 380px;
+  height: calc(100vh - 80px);
+  background: #fff;
+  border-radius: 15px 0 0 15px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  overflow: hidden; /* Main box fixed rahega */
+  animation: slideIn 0.3s ease-out;
+}
+.sidebar-scrollable-body {
+  flex: 1;
+  overflow-y: auto; /* Sirf ye hissa scroll hoga */
+  padding: 20px;
+}
+/* Instagram Style Engagement Box */
+.engagement-row {
+  display: flex;
+  justify-content: space-around;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+  font-weight: 600;
+  color: #1877f2;
+}
+
+/* Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sidebar-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Image (smaller like Facebook) */
+
+.sidebar-post-image {
+  width: 100%;
+  height: auto; /* keeps original aspect ratio */
+  object-fit: contain; /* ensures it fits inside without cropping */
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* Title */
+.sidebar-post-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Caption */
+.sidebar-post-caption {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #262626;
+  margin: 15px 0;
+  white-space: pre-wrap; /* Facebook line breaks ke liye */
+}
+
+/* Tabs */
+.sidebar-tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.sidebar-tabs span {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+
+.sidebar-tabs span.active {
+  color: #1877f2;
+  border-bottom: 2px solid #1877f2;
+}
+
+/* Content */
+.sidebar-content {
+  font-size: 14px;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+.comment-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.comment-username {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1c1e21;
+}
+
+.comment-text {
+  font-size: 13px;
+  color: #444;
+  margin-top: 2px;
+}
+.comment-time {
+  font-size: 11px;
+  color: #888;
+  margin-left: 8px;
+}
+.comment-item strong {
+  font-size: 13px;
+}
+
+.empty-text {
+  color: #888;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.likes-count {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* Close button */
+.close-btn {
+  background: #ff5c5c;
+  border: none;
+  padding: 4px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Sidebar Tab Styling */
+.sidebar-tabs span.active {
+  color: #1877f2;
+  border-bottom: 2px solid #1877f2;
+  font-weight: 700;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.selected-page {
+  border: 2px solid #1877f2;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+/* View More container */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* ensure full width */
+  margin-top: 10px;
+}
+
+.view-more-btn {
+  padding: 8px 16px;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.view-more-btn:hover {
+  background-color: #166fe5;
+}

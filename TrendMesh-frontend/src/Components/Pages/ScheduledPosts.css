@@ -1,0 +1,1329 @@
+/* ================= MAIN CONTAINER ================= */
+.calendar-container {
+  margin-top: 10px;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  height: calc(
+    100vh - 135px
+  ); /* Poore white box ko screen mein lock kar diya */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ================= HEADER ================= */
+.modern-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Thoda kam kiya taake grid opar aaye */
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px !important; /* Elements ko nazdeek lane ke liye gap kam kiya */
+}
+.nav-circle-btn,
+.today-btn {
+  margin: 0 !important;
+}
+
+.nav-circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.today-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.date-range-display {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Icon aur Text ka gap kam kiya */
+  cursor: pointer;
+  position: relative;
+  margin-left: 5px; /* Today button se thoda fasla */
+  padding-left: 10px;
+  border-left: 1.5px solid #e2e8f0; /* Aik choti line divider ke liye */
+}
+
+.date-text {
+  font-weight: 700; /* Thoda bold */
+  font-size: 16px;
+  color: #1e293b;
+  min-width: auto; /* Fixed width hata di taake space fuzool na ghire */
+  text-align: left;
+}
+.invisible-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  pointer-events: none;
+}
+/* Pink Calendar Icon Styling */
+.calendar-trigger-icon {
+  color: #ed028c !important; /* TrendMesh Pink Color */
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-trigger-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Invisible input ko text ke opar overlap karwayein taake click kahin bhi ho */
+.date-range-display .invisible-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: all; /* Isay enable kiya taake click work kare */
+}
+/* Right Side Controls */
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.filter-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.minimal-filter-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 7px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* --- ISAY UPDATE KAREIN (Z-index zaroori hai) --- */
+.hidden-select-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2; /* Ye button ke upar invisible layer banayega */
+}
+
+/* --- DATE DISPLAY FIX (Arrows ke liye) --- */
+.date-range-display {
+  position: relative; /* Relative hona zaroori hai */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.minimal-filter-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 7px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.view-mode-pill {
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.view-mode-pill button {
+  padding: 6px 15px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 7px;
+  color: #64748b;
+}
+
+.view-mode-pill button.active {
+  background: white;
+  color: #4f46e5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.hidden-select-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ================= WEEKDAYS ================= */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.weekdays span {
+  text-align: center;
+}
+
+/* ================= PROFESSIONAL DAY VIEW UPDATES ================= */
+
+/* ================= PROFESSIONAL DAY VIEW FIX ================= */
+.day-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  width: 100%;
+  min-height: 500px;
+  height: calc(100vh - 200px); /* Screen ki height fix karein */
+  overflow: hidden; /* Bahar nikalne wala content hide ho jaye */
+  box-sizing: border-box;
+}
+
+/* Day view mein column ki width wide rakhein */
+.day-grid .day-column {
+  width: 100% !important;
+  max-width: 650px !important;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 auto;
+  max-height: 100%; /* Grid se bahar nahi jayega */
+  overflow-y: auto; /* Scrollbar sirf yahan aayega */
+  display: flex;
+  flex-direction: column;
+}
+/* Sirf Red Box (Day Column) ke scrollbar ki styling */
+.day-grid .day-column::-webkit-scrollbar {
+  width: 6px;
+}
+
+.day-grid .day-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.day-grid .day-column::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Light slate gray */
+  border-radius: 10px;
+}
+
+.day-grid .day-column::-webkit-scrollbar-thumb:hover {
+  background: #ed028c; /* TrendMesh Pink on hover */
+}
+
+/* Day View Individual Card */
+.day-view-post-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column; /* Header top par, baki content niche */
+}
+
+.day-view-post-card:hover {
+  border-color: #4f46e5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Header: Platform & Time */
+.day-post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.day-post-time {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.day-platform-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.day-status-pill {
+  margin-left: auto;
+  font-size: 11px;
+  color: #16a34a;
+  font-weight: 600;
+}
+.day-post-content {
+  display: flex; /* Is se image aur text side-by-side ayenge */
+  align-items: flex-start; /* Taake text top se start ho */
+  gap: 15px; /* Image aur text ke beech ka gap */
+}
+
+/* Small Square Image on the Left */
+.day-post-image {
+  width: 70px !important; /* Chota size */
+  height: 70px !important;
+  min-width: 70px; /* Size fix rakhne ke liye */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+/* Caption on the Right side */
+.day-post-message {
+  flex: 1; /* Baaki bachi hui saari jagah caption le lega */
+  font-size: 14px;
+  color: #334155;
+  margin: 0;
+  line-height: 1.5;
+
+  /* Caption ko 3 lines tak limit karne ke liye */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ================= EMPTY STATE ================= */
+.no-posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.no-posts-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+  opacity: 0.4;
+}
+
+.no-posts-text {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.schedule-now-btn {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.schedule-now-btn:hover {
+  background-color: #4338ca;
+  transform: scale(1.05);
+}
+/* ================= CALENDAR GRID ================= */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.day-box {
+  min-height: 115px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  border: 1px solid #e5e7f0;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.day-box:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.day-box.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+
+/* ================= TODAY STYLE ================= */
+.today {
+  border: 2px solid #4f46e5;
+}
+
+/* ================= BADGE ================= */
+.badge {
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 20px;
+}
+
+/* ================= POST ITEM ================= */
+/* ================= POST ITEM HOVER ================= */
+.post-item {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white; /* white text for colored background */
+  cursor: pointer; /* make pointer to show clickable */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease; /* smooth hover effect */
+}
+
+.post-item:hover {
+  transform: translateY(-2px); /* slight lift */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* shadow on hover */
+}
+
+.post-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+/* ================= MODAL ================= */
+/* ================= MODAL ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 400px;
+  height: 450px; /* fixed height */
+  background: rgb(249, 248, 248);
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: modalFade 0.2s ease-in-out;
+  overflow: hidden; /* prevent scrolling */
+}
+
+@keyframes modalFade {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal button {
+  margin-top: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal button:hover {
+  background: #4338ca;
+}
+
+/* Modal Post Card */
+.schedule-post-card {
+  background: rgb(249, 248, 248);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+}
+
+/* Header */
+.schedule-post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #989696;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.schedule-platform-icon {
+  width: 25px; /* smaller icon */
+  height: 25px;
+}
+
+.schedule-post-header h4 {
+  font-size: 18px;
+  color: #111;
+}
+
+/* Image */
+.schedule-post-image {
+  width: 100%;
+  max-height: 150px; /* smaller image */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Caption */
+.schedule-post-caption {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  margin: 15px 0;
+
+  /* Poray caption ko dikhane ke liye */
+  height: auto !important;
+  min-height: min-content;
+  overflow: visible !important;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  display: block; /* Taake niche wali row ko dhakka de */
+}
+
+/* Info Section */
+.schedule-post-info {
+  background: #f7fbff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.schedule-post-info p {
+  margin: 3px 0;
+  color: #444;
+}
+
+/* Toggle Buttons */
+.view-toggle {
+  display: flex;
+  margin-left: 20px;
+}
+.view-toggle button {
+  margin-left: 5px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  background: #e9ecf7;
+  cursor: pointer;
+  font-weight: 600;
+}
+.view-toggle button.active {
+  background: #4f46e5;
+  color: white;
+}
+
+/* ================= WEEK GRID ================= */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: calc(
+    100vh - 250px
+  ); /* Screen height se header nikal kar set karein */
+  overflow-y: auto; /* Agar posts zyada hoon to grid ke andar scroll ho */
+  padding-bottom: 20px;
+}
+
+/* ================= DAY COLUMN ================= */
+.day-column {
+  height: 100%; /* Parent grid ki height le */
+  min-height: 550px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Content bahar na nikle */
+}
+
+.day-column .day-number {
+  font-weight: 200;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #565656;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid #e5e7f0;
+  padding-bottom: 6px;
+  padding-top: 6px;
+
+  background-color: #f0f0f0; /* light grey background for day/date */
+  border-radius: 6px; /* optional, slightly rounded */
+}
+
+/* Weekday labels for week view */
+.week-vertical span {
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+/* --- Published Post Faded Effect --- */
+
+/* --- Green Tick Style --- */
+.tick-icon {
+  margin-left: auto;
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* --- Weekly Header Styling --- */
+.day-column .day-number {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #333 !important;
+  background-color: #f1f5f9;
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
+.day-name-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748b;
+  display: block; /* Date ke upar dikhane ke liye */
+  margin-bottom: 2px;
+}
+/* --- Action Buttons Styling --- */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+}
+.schedule-post-header .action-buttons {
+  display: flex !important;
+  gap: 10px !important;
+  margin-left: auto !important;
+}
+
+/* 2. Icons Default State (White background par Slate gray nazar ayega) */
+.schedule-post-header .icon-btn svg {
+  color: #64748b !important; /* Neutral Gray taake white par saaf dikhe */
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.edit-btn,
+.delete-btn {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 6px !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+}
+
+.edit-btn:hover {
+  background-color: #f0f7ff !important;
+  border-color: #3b82f6 !important;
+}
+.edit-btn:hover svg {
+  color: #3b82f6 !important;
+}
+
+.delete-btn:hover {
+  background-color: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+.delete-btn:hover svg {
+  color: #ef4444 !important;
+}
+/* ... (Aapki existing CSS yahan rahegi) ... */
+
+.edit-modal-height {
+  height: auto !important; /* Allow modal to expand during edit */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.edit-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #4f46e5;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+  font-size: 13px;
+  margin-bottom: 5px;
+  resize: none;
+  background: #fff;
+}
+
+.edit-time-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.edit-save-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.save-btn {
+  background: #10b981 !important;
+  color: white;
+  flex: 1;
+}
+
+.cancel-btn {
+  background: #64748b !important;
+  color: white;
+  flex: 1;
+}
+
+.schedule-post-caption p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.right-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.platform-filter-dropdown {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+}
+
+.platform-filter-dropdown:hover {
+  border-color: #4f46e5;
+}
+/* Sirf Border Highlight (Monthly style ki tarah) */
+.active-today {
+  border: 2px solid #4f46e5 !important; /* TrendMesh Purple color */
+  background-color: transparent !important; /* Background remove kar diya */
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12) !important;
+  transition: all 0.3s ease;
+}
+
+/* Day number ka color bhi agar simple rakhna hai */
+.active-today .day-number {
+  color: #4f46e5;
+  font-weight: 700;
+}
+.schedule-now-btn {
+  margin-top: 20px;
+  background-color: #4f46e5; /* Professional Indigo color */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.schedule-now-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+}
+
+.schedule-now-btn:active {
+  transform: translateY(0);
+}
+.post-card-professional {
+  background: #ffffff;
+  border: 2px solid #e6edf4;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.post-card-professional:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.post-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 8px;
+  margin-bottom: 10px;
+}
+
+.mini-platform-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.post-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.post-card-body {
+  display: flex;
+  gap: 12px;
+}
+
+.post-card-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.post-card-caption {
+  font-size: 13px;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.status-badge-mini {
+  font-size: 10px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+/* ================= NEW HOOTSUITE STYLE LAYOUT ================= */
+
+/* 1. Body ko vertical stack mein convert karne ke liye */
+/* Card Body compact layout */
+.post-card-body-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+}
+
+/* Caption pic se opar - 2 words style */
+.post-card-caption-top {
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0 0 4px 0;
+  width: 100%;
+  text-align: left;
+  padding-left: 2px;
+}
+
+/* Choti pic */
+.post-card-thumbnail-small {
+  width: 95% !important;
+  height: 55px !important;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+/* Status Square Box */
+.status-square-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 4px 0;
+  width: 100%;
+  font-size: 10px;
+  font-weight: 700;
+  color: #16a34a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.tick-mark {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* Header tweaks */
+.post-card-header {
+  margin-bottom: 6px;
+}
+/* ================= THE FINAL GREEN COLOR FIX ================= */
+
+/* 1. Monthly View (Bars) Fix */
+.post-item.published-post {
+  opacity: 0.6 !important; /* Poori bar ko halka karein */
+  filter: saturate(0.8); /* Colors ko thoda soft karein */
+  box-shadow: none !important;
+}
+
+/* 2. Week/Day View (Cards) Fix */
+.published-post.post-card-professional,
+.published-post.day-view-post-card {
+  opacity: 1 !important;
+  background-color: #ffffff !important; /* Card background white hi rahega */
+  border-color: #f1f5f9 !important; /* Border bohot light */
+  filter: none !important;
+}
+
+/* 3. Sab views mein Text aur Images ko fade karein (Lekin Tick ko nahi) */
+.published-post .post-card-caption,
+.published-post .post-card-thumbnail-small,
+.published-post .day-post-message,
+.published-post .day-post-image,
+.published-post .post-time,
+.published-post span:not(.tick-icon):not(.tick-mark) {
+  opacity: 0.6; /* Sirf content fade hoga */
+}
+
+/* 4. THE GREEN TICK - Isay hamesha 100% bright rakhein */
+.published-post .tick-icon,
+.published-post .tick-mark,
+.published-post .day-status-pill,
+.published-post .status-square-box,
+.published-post .status-badge-mini {
+  opacity: 1 !important;
+  filter: none !important;
+  color: #22c55e !important; /* Modern Success Green */
+  font-weight: 700 !important;
+  visibility: visible !important;
+}
+
+/* 5. Hover par sab wapas normal vibrant ho jaye */
+.published-post:hover {
+  opacity: 1 !important;
+  filter: saturate(1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.published-post:hover * {
+  opacity: 1 !important;
+}
+.dragging-over {
+  background: #f0f7ff;
+}
+/* --- Updated Status Styles --- */
+
+/* 1. Scheduled Status (Professional Blue) */
+.is-scheduled,
+.pill-sch {
+  background-color: #e6f7ff !important; /* Soft Blue background */
+  color: #007bff !important; /* Professional Blue text */
+  border: 1px solid #91d5ff;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 2. Published Status (Clean Green) */
+.is-published,
+.pill-pub {
+  background-color: #f6ffed !important; /* Soft Green background */
+  color: #52c41a !important; /* Success Green text */
+  border: 1px solid #b7eb8f;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 3. Professional Clock Icon Alignment */
+.pro-icon-month,
+.professional-clock-icon-inline {
+  width: 14px !important;
+  height: 14px !important;
+  margin-right: 6px;
+  vertical-align: middle;
+  stroke-width: 2.5px;
+}
+
+/* 4. Calendar Box Drag Feedback */
+.day-box.dragging-over {
+  background-color: #f0f7ff !important;
+  border: 2px dashed #007bff !important;
+  transition: all 0.2s ease;
+}
+
+/* 5. Post Item Borders (Visual Hint) */
+.published-post {
+  border-left: 4px solid #52c41a !important;
+}
+
+.scheduled-post {
+  border-left: 4px solid #007bff !important;
+}
+
+/* 6. Month View Status Icon (Small White Dot/Icon) */
+.post-item .pro-icon-month {
+  margin-left: auto;
+  margin-right: 0;
+  stroke: white;
+}
+/* ============================================================
+   DELETE BOX (WARNING) - BALANCED COMPACT
+   ============================================================ */
+
+/* 1. Main Box Size - Balanced (350px) */
+.swal2-popup.swal2-modal.swal2-icon-warning {
+  width: 350px !important;
+  padding: 20px !important;
+  border-radius: 12px !important;
+}
+
+/* 2. Warning Icon (!) - Slightly Bigger but neat */
+.swal2-icon.swal2-warning {
+  width: 55px !important;
+  height: 55px !important;
+  margin: 10px auto 15px !important;
+  border-width: 3px !important;
+}
+
+/* Exclamation mark (!) content alignment */
+.swal2-icon.swal2-warning .swal2-icon-content {
+  font-size: 32px !important;
+  line-height: 55px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Title - Balanced Size */
+.swal2-title {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
+
+/* 4. Sub-text - Readable but small */
+.swal2-html-container {
+  font-size: 15px !important;
+  margin: 0 0 10px 0 !important;
+
+  color: #64748b !important;
+  font-family: inherit !important;
+}
+
+/* 5. Buttons - Professional Spacing */
+.swal2-actions {
+  margin-top: 1px !important;
+  gap: 10px !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+  padding: 8px 22px !important;
+  font-size: 15px !important;
+  min-width: 100px !important;
+  border-radius: 8px !important;
+  font-family: inherit !important;
+}
+/* ============================================================
+   POST MOVED (TOAST) - TEXT SIZE ONLY
+   ============================================================ */
+
+/* Sirf Toast ke andar jo "Post Moved Successfully" likha hai usay chota karne ke liye */
+.swal2-toast .swal2-title {
+  font-size: 15px !important; /* Size chota kar diya */
+  font-weight: 600 !important;
+  margin-top: 6px !important;
+  padding: 0 !important;
+  font-family: inherit !important; /* TrendMesh ka original font */
+  color: #334155 !important;
+}
+
+/* Toast ka icon bhi proportionally adjust ho jaye ga */
+.swal2-toast .swal2-icon {
+  zoom: 0.8 !important;
+  margin-right: 8px !important;
+}
+/* ============================================================
+   UPDATED SUCCESSFULLY (SUCCESS MODAL) - 350px & CENTERED
+   ============================================================ */
+
+/* 1. Main Box Size - 350px */
+.swal2-popup.swal2-modal:has(.swal2-success) {
+  width: 380px !important;
+  padding: 20px !important;
+  border-radius: 12px !important;
+}
+
+/* 2. Success Icon - Scale and Margin Adjustment */
+.swal2-icon.swal2-success {
+  border: none !important;
+
+  /* Icon ko center mein rakh kar 70% chota karein */
+  transform: scale(0.7) !important;
+  transform-origin: center center !important;
+
+  /* Top margin 30px kiya taake opar se jagah saaf nazar aaye */
+  margin: 20px auto 10px !important;
+}
+
+/* 3. Circle (Ring) Visibility Fix */
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: 4px solid #a5dc86 !important; /* Proper Green Circle */
+  opacity: 0.6;
+}
+
+/* 4. Success Tick (Lines) Color */
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #a5dc86 !important;
+}
+
+/* 5. Title Spacing Fix */
+.swal2-popup.swal2-modal:has(.swal2-success) .swal2-title {
+  font-size: 19px !important;
+  margin-top: 5px !important;
+  font-family: inherit !important;
+  color: #1e293b !important;
+}
+
+/* 6. Success Button Styles (Optional) */
+.swal2-popup.swal2-modal:has(.swal2-success) .swal2-confirm {
+  padding: 8px 25px !important;
+  font-size: 13px !important;
+  background-color: #4f46e5 !important; /* TrendMesh Purple/Blue */
+  border-radius: 8px !important;
+}
+/* ================= +MORE VISIBILITY FIX ================= */
+
+.view-more-badge-professional {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent, white 60%); /* Smooth fade effect */
+  color: #ed028c !important;
+  font-size: 14px !important;
+  font-weight: 800;
+  padding: 10px 0 5px 0; /* Thodi zyada padding */
+  text-align: center;
+  z-index: 5;
+}
+
+.view-more-badge-professional:hover {
+  text-decoration: underline;
+  color: #4f46e5 !important; /* Hover par Indigo ho jaye */
+}
+.day-box {
+  min-height: 115px;
+  max-height: 115px; /* Height fix karein taake box barhe nahi */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden; /* Bahar nikalta content hide ho jaye */
+  position: relative;
+  padding-bottom: 25px; /* Niche space choren "+more" ke liye */
+}
+/* Calendar (Month View) ke liye */
+.calendar-grid .day-box {
+  min-height: 115px;
+  max-height: 115px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Week View ke liye - Isay flexible rakhein */
+.week-grid .day-column {
+  min-height: 460px; /* Purani height wapas dein */
+  height: auto;
+  position: relative;
+  overflow: visible; /* Week view mein scroll hona chahiye, hide nahi */
+}
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Tooltip Wrapper */
+.tooltip-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Round Button */
+.plus-action-btn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.3s;
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+
+.plus-action-btn:hover {
+  background: #6d28d9;
+  transform: scale(1.1);
+}
+
+/* Tooltip Text Style */
+.tooltip-text {
+  visibility: hidden;
+  width: 90px;
+  background-color: #393838;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px;
+  position: absolute;
+  z-index: 1000;
+  top: 125%; /* Button ke upar */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  font-size: 11px;
+  pointer-events: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

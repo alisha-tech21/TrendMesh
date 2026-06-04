@@ -1,0 +1,417 @@
+.twitter-wrapper {
+  width: 100%;
+  height: 90%;
+  margin-top: 15px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #15202b, #1da1f2, #192734);
+  border-radius: 25px;
+  padding: 30px;
+  color: #fff;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Header */
+.twitter-header {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #1da1f2, #192734);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.twitterlogo {
+  width: 60px;
+  height: 60px;
+}
+
+/* ===================== STATS ===================== */
+.twitter-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0 5px 0;
+  width: 100%;
+  align-items: stretch;
+}
+
+.twitter-stats-box {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 340px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.twitter-stats-box h3 {
+  font-size: 22px !important;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #1c1e21;
+}
+
+.performance-chart {
+  flex: 1.5;
+}
+
+/* ===================== CHART ===================== */
+.chart-container {
+  flex: 1;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart-legend,
+.sentiment-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #f0f2f5;
+}
+/* ===================== LEGEND ===================== */
+.twitter-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 14px;
+  border-top: 1px solid #333333;
+  color: #090a0a;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.impression-twitter {
+  background-color: #1da1f2;
+}
+.tweets-twitter {
+  background-color: #17bf63;
+}
+.comments-twitter {
+  background-color: #f45d22;
+}
+
+.pos-twitter {
+  background-color: #1da1f2;
+}
+.neu-twitter {
+  background-color: #a8a8a8;
+}
+.neg-twitter {
+  background-color: #f56040;
+}
+
+.chart-legend p,
+.sentiment-legend div {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b4f56;
+  display: flex;
+  align-items: center;
+}
+/* ===================== POST SECTION ===================== */
+.twitter-post-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  clear: both;
+}
+
+.twitter-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.twitter-post-header span {
+  background: #1da1f2;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 12px;
+}
+
+/* ===================== GRID ===================== */
+.twitter-post-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* ===================== CARD ===================== */
+.twitter-post-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  padding: 14px;
+  text-align: center;
+  height: 260px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.twitter-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.twitter-post-card img,
+.twitter-post-card video {
+  width: 100%;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #000;
+}
+
+/* ===================== TEXT ===================== */
+.tweet-text {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.tweet-footer {
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  color: #8899a6;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===================== MEDIA ===================== */
+.post-card-media {
+  width: 100% !important;
+  height: 150px !important;
+  overflow: hidden !important;
+  display: block !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  background-color: #000;
+  border-radius: 8px;
+}
+
+.post-card-media img,
+.post-card-media video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+}
+
+.twitter-post-card small {
+  font-size: 12px;
+  color: #666;
+  margin-top: 0px;
+}
+
+/* ===================== SIDEBAR ===================== */
+.post-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  animation: slideInSidebar 0.25s ease;
+}
+
+/* HEADER */
+.sidebar-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+/* BODY */
+.sidebar-scrollable-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  padding-bottom: 120px;
+}
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  overflow: visible;
+}
+
+/* MEDIA */
+.sidebar-post-image {
+  width: 100%;
+  height: 75vh; /* 👈 main focus */
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.sidebar-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* TikTok feel */
+}
+
+/* CAPTION */
+.sidebar-post-caption {
+  font-size: 14px;
+  padding: 12px;
+  line-height: 1.4;
+  color: #262626;
+  margin: 15px 0;
+  white-space: pre-wrap;
+}
+
+/* ENGAGEMENT */
+.engagement-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #1da1f2;
+}
+
+.engagement-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* COMMENTS */
+.comments-section {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid #f1f1f1;
+  align-items: flex-start;
+}
+
+.comment-item strong {
+  font-size: 13px;
+  color: #111;
+}
+
+.comment-item p {
+  font-size: 13px;
+  margin: 2px 0 0;
+  color: #555;
+}
+
+/* BUTTONS */
+.view-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 8px 24px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.view-more-btn:hover {
+  background-color: #1a91da;
+}
+
+.close-btn {
+  background: #ff5c5c;
+  border: none;
+  padding: 4px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* EMPTY STATE */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.star-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.empty-msg-text {
+  color: #fff;
+}
+.likes-count {
+  color: #817f7f;
+}

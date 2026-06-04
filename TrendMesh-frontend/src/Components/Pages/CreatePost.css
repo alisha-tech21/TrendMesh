@@ -1,0 +1,385 @@
+.create-post-wrapper {
+  width: 100%;
+  height: 90%;
+  margin-top: 15px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: white;
+  border-radius: 25px;
+  padding: 30px;
+  color: #000;
+  animation: fadeIn 0.3s ease;
+}
+.page-title {
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.section-label {
+  text-align: left;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 5px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  border-left: 5px solid #631699;
+  background: linear-gradient(to right, #ece7ff, #f7f4ff);
+  color: #000;
+}
+
+.title-input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif; /* change font style */
+  font-size: 14px; /* optional: adjust font size */
+  line-height: 1.5; /* optional: better readability */
+  color: #333; /* optional: text color */
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.upload-box {
+  border: 2px dashed #c7c7ff;
+  border-radius: 16px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background: #fafafa;
+  transition: 0.3s ease;
+}
+
+.upload-box:hover {
+  border-color: #9b4bff;
+}
+.upload-icon {
+  font-size: 28px;
+  color: #9b4b9e;
+  margin-bottom: 5px;
+}
+
+.upload-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #631699;
+}
+
+.upload-note {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: #888;
+}
+
+.upload-box.has-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* prevent image from overflowing */
+  padding: 0;
+}
+
+.preview-img {
+  max-height: 100%; /* fill the height of upload box */
+  max-width: 100%; /* prevent overflow horizontally */
+  object-fit: cover; /* cover the box nicely */
+  border-radius: 10px;
+}
+.preview-img,
+.preview-video {
+  max-height: 100%; /* Bilkul image ki tarah height fill karega */
+  max-width: 100%; /* Horizontal overflow rokay ga */
+  object-fit: cover; /* Cover property image ki tarah set kar di */
+  border-radius: 10px; /* Same border radius */
+  display: block;
+}
+/* Remove Button */
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ff3b3b;
+  color: #fff;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  background: #d60000;
+}
+
+.platform-schedule-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 1px;
+}
+.platform-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #00c853;
+  background: #fff;
+  color: #3b3b3b;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: #00c853;
+  color: #fff;
+}
+
+.schedule-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.schedule-btn-primary {
+  font-size: 15px;
+  margin-right: 10px;
+  background: #7d00ff;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.action-row {
+  display: flex;
+  justify-content: space-between; /* 🔥 left & right */
+  align-items: center;
+  margin-top: 25px;
+}
+
+.publish-btn {
+  font-size: 15px;
+  margin-left: 10px;
+  background: #7d00ff;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.schedule-btn-primary,
+.publish-btn {
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.schedule-btn-primary:hover,
+.publish-btn:hover {
+  background: #5a00b3; /* Slightly darker shade */
+  transform: scale(1.05); /* Slight zoom effect */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+.popup {
+  position: fixed;
+  top: 100px; /* distance from the top */
+  left: 58%; /* center horizontally */
+  transform: translateX(-50%); /* horizontally center */
+  padding: 14px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+}
+
+.popup.success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.popup.error {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50%) translateY(-20px); /* start slightly above */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0); /* slide to final position */
+    opacity: 1;
+  }
+}
+/* Container for Textarea and Button */
+.content-container {
+  position: relative;
+  width: 100%;
+}
+
+.content-container textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  padding-bottom: 50px; /* Space for the button */
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.ai-gen-btn-inner {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.ai-modal {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: modalIn 0.3s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  color: #7c3aed;
+  margin: 0;
+}
+
+.close-x {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.ai-prompt-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.gen-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ai-result-preview {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  border-left: 5px solid #7c3aed;
+}
+
+.use-caption-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+/* TikTok button jab image select ho to fade ho jaye */
+.disabled-pill {
+  opacity: 0.4; /* Button ko halka (fade) kar dega */
+  cursor: not-allowed; /* Mouse pointer change kar dega */
+  filter: grayscale(
+    80%
+  ); /* Colors ko thora gray kar dega taake user ko pata chale ye off hai */
+  pointer-events: none; /* Click block kar dega */
+  background-color: #f0f0f0 !important; /* Background light kar dein */
+  border: 1px dashed #ccc !important;
+}
+
+/* Hover par bhi koi effect na aaye */
+.disabled-pill:hover {
+  transform: none;
+  background-color: #f0f0f0 !important;
+}

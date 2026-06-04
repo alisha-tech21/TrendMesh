@@ -1,0 +1,18 @@
+.secondary-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #1D1E9D, #631699, #DF0891);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.secondary-btn:hover {
+ background: linear-gradient(90deg, #1D1E9D, #631699, #DF0891);
+ transform: translateY(-3px);
+  background-position: right center;
+  box-shadow: 0 0 15px #DF0891, 0 0 15px #1D1E9D, 0 0 15px #631699;
+}

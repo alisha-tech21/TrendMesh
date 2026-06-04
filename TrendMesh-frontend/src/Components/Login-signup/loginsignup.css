@@ -1,0 +1,243 @@
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a0174;
+}
+
+.auth-container-modern {
+  display: flex;
+  width: 1050px;
+  height: 680px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+/* LEFT PANEL */
+.vibrant-panel {
+  width: 40%;
+  padding: 40px;
+  background: linear-gradient(130deg, #1d1e9d, #ff0dbb, #7d00ff);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.logo img {
+  font-size: 30px;
+  width: 60px;
+}
+
+.tagline {
+  margin-top: 32px;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  padding-right: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tagline-sub {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+.vibrant-panel p {
+  margin-top: 20px;
+  padding-right: 10px;
+  text-align: justify;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* RIGHT PANEL */
+.form-panel-modern {
+  flex: 1;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.auth-form input {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Updated: Error state for input */
+.auth-form input.input-error {
+  border: 1px solid red;
+  outline: none;
+}
+
+.auth-form input.input-error:focus {
+  border: 1px solid darkred;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.primary-cta-button {
+  background: linear-gradient(90deg, #1d1e9d, #ff0dbb, #7d00ff);
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-cta-button:hover {
+  background: #7b1fa2;
+}
+
+.divider {
+  text-align: center;
+  color: #aaa;
+  margin: 10px 0;
+}
+
+.social-row {
+  display: flex;
+  gap: 12px;
+}
+
+.social-button {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-button img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.social-button:hover {
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #1d1e9d, #ff0dbb, #7d00ff) border-box;
+  border: 2px solid transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.toggle-text span {
+  color: #9c27b0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.LS-wrapper {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px; /* Enables 3D depth */
+}
+
+.LS-image {
+  width: 420px;
+  height: 350px;
+  max-width: none;
+  margin-left: 180px;
+  transform: rotateX(8deg) rotateY(-12deg);
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.25));
+}
+
+/* Hover interaction */
+.LS-image:hover {
+  transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+  filter: drop-shadow(0 35px 45px rgba(0, 0, 0, 0.35));
+}
+.forgot-password-row {
+  width: 100%;
+  text-align: right;
+  margin: 6px 0 14px;
+}
+
+.forgot-password-row span {
+  font-size: 13px;
+  color: #630699;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.forgot-password-row span:hover {
+  text-decoration: underline;
+}
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+/* Ye line add karein taaki input pura fail jaye */
+.password-input-wrapper input {
+  width: 100%;
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex; /* alignment ke liye */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  background: white; /* optional: agar icon ke piche line dikhe */
+  padding-left: 5px;
+}

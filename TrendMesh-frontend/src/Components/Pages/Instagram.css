@@ -1,0 +1,666 @@
+.insta-wrapper {
+  width: 100%;
+  height: 90%;
+  margin-top: 15px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: linear-gradient(
+    90deg,
+    #1877f2,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #f77737,
+    #fcaf45
+  );
+  border-radius: 25px;
+  padding: 30px;
+  color: #000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Header */
+.insta-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  text-align: left;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #c13584, #833ab4, #1877f2);
+  color: white;
+}
+
+.insta-header h3 {
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.insta-header p {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #d5d5f1;
+}
+.instagramlogo {
+  width: 60px;
+  height: 60px;
+}
+
+.insta-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0 5px 0; /* Margin niche se kam kar diya */
+  width: 100%;
+  align-items: stretch;
+}
+
+.insta-stats-box {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 340px;
+  height: 350px; /* Sizing same as Insta */
+  display: flex;
+  flex-direction: column;
+}
+
+.insta-stats-box h3 {
+  font-size: 22px !important;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #1c1e21;
+}
+.performance-chart {
+  flex: 1.5;
+}
+
+/* Chart Container */
+.custom {
+  flex: 1;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  margin-left: -25px;
+  justify-content: center;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.reach-insta {
+  background-color: #e1306c;
+}
+.likes-insta {
+  background-color: #833ab4;
+}
+.comments-insta {
+  background-color: #fcaf45;
+}
+
+.pos-insta {
+  background-color: #e1306c;
+}
+.neu-insta {
+  background-color: #a8a8a8;
+}
+.neg-insta {
+  background-color: #f56040;
+}
+
+.chart-legend p,
+.sentiment-legend div {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b4f56;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-post-caption {
+  font-size: 14px;
+  color: #444;
+  padding: 15px;
+  background: #fdfdfd;
+  border-left: 3px solid #e1306c;
+  margin: 10px 0;
+}
+
+/* Posts Section */
+.insta-post-section {
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 18px;
+  background: linear-gradient(90deg, #c1358432, #833ab437, #1876f240);
+  border: 1px solid #1da1f2;
+  color: white;
+}
+.stories-section {
+  background: linear-gradient(90deg, #c1358432, #833ab437, #1876f240);
+  border: 1px solid #f21da7cf;
+  margin-top: 35px;
+}
+.reels-section {
+  background: linear-gradient(90deg, #c1358432, #833ab437, #1876f240);
+  border: 1px solid#f21da7cf;
+}
+.posts-section {
+  background: linear-gradient(90deg, #c1358432, #833ab437, #1876f240);
+  border: 1px solid #f21da7cf;
+}
+.insta-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 5px;
+}
+
+.insta-post-header h3 {
+  font-size: 22px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.insta-post-header span {
+  background: #1877f2;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.insta-post-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.insta-post-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+  height: 260px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.insta-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.insta-post-card p {
+  font-size: 12px;
+  overflow: hidden;
+}
+.post-card-media {
+  width: 100% !important;
+  height: 150px !important;
+  overflow: hidden !important;
+  display: block !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  background-color: #000;
+  border-radius: 8px;
+}
+/* Post images */
+.insta-post-card img,
+.insta-post-card video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+}
+/* Post timestamp */
+.insta-post-card small {
+  font-size: 12px;
+  color: #666;
+  margin-top: 0px;
+}
+
+/* Empty state */
+.insta-no-posts {
+  text-align: center;
+  padding: 25px;
+}
+
+.insta-no-posts img {
+  width: 40px;
+  opacity: 0.7;
+}
+
+.post-count {
+  background: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.view-more-btn {
+  padding: 8px 18px;
+  background: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.view-more-btn:hover {
+  background: #166fe5;
+}
+
+@media (max-width: 1400px) {
+  .fb-post-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .fb-post-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .fb-post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .fb-post-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 360px;
+  height: calc(100vh - 80px);
+  background: #fff;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+.close-btn {
+  background: #ff5c5c;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  float: right;
+}
+
+.post-detail-top img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.post-detail-stats {
+  margin-top: 20px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.post-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar-post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.sidebar-post-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.sidebar-post-caption {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  margin: 15px 0;
+
+  height: auto !important;
+  min-height: min-content;
+  overflow: visible !important;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  display: block;
+}
+
+.sidebar-tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.sidebar-tabs span {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+
+.sidebar-tabs span.active {
+  color: #1877f2;
+  border-bottom: 2px solid #1877f2;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.comment-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.comment-item strong {
+  font-size: 13px;
+}
+
+.empty-text {
+  color: #888;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.likes-count {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.close-btn {
+  background: #ff5c5c;
+  border: none;
+  padding: 4px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.selected-page {
+  border: 2px solid #1877f2;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+.comment-avatar-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 2px 0;
+  background: transparent !important;
+  margin: 0;
+}
+
+/* 2. Background hatane ke liye (Crucial Fix) */
+.comment-body {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comment-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-text {
+  font-size: 13px;
+  color: #333;
+  margin-top: -2px;
+  line-height: 1.2;
+}
+
+.comment-username {
+  font-weight: 700;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.comment-time {
+  font-size: 11px;
+  color: #888;
+}
+
+.engagement-row {
+  display: flex;
+  justify-content: space-around;
+  background: #f6f7f9;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0 20px;
+  font-weight: 600;
+}
+
+.sidebar-subtitle {
+  font-size: 12px;
+  color: #888;
+}
+
+.insta-post-card p {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.insta-post-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+
+  padding: 14px;
+  text-align: center;
+  height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.insta-post-card p {
+  color: #444;
+  font-weight: 500;
+}
+
+.sidebar-scrollable-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 25%;
+  margin-right: 4px;
+}
+
+.reach-color {
+  background-color: #e1306c;
+}
+.likes-color {
+  background-color: #833ab4;
+}
+.comments-color {
+  background-color: #fcaf45;
+}
+
+.positive-color {
+  background-color: #e1306c;
+}
+.neutral-color {
+  background-color: #a8a8a8;
+}
+.negative-color {
+  background-color: #f56040;
+}
+
+.chart-container {
+  flex: 1;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-legend,
+.sentiment-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 16px;
+  border-top: 1px solid #eee;
+}
+
+.sentiment-legend div {
+  display: flex;
+  align-items: center;
+}
+.sidebar-scrollable-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  background: white;
+  position: sticky;
+  bottom: 0;
+}
+
+.delete-post-btn-footer {
+  width: 100%;
+  padding: 12px;
+  background: #fff1f0;
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.delete-post-btn-footer:hover {
+  background: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+}

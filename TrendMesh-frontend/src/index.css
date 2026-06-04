@@ -1,0 +1,273 @@
+:root {
+  --primary-color: #4b6cb7;
+  --secondary-color: #182848;
+  --green-color: #38a169;
+  --transition-speed: 700ms;
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:url("..Assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+}
+
+.auth-container {
+  position: relative;
+  margin-bottom: 2%;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.forms-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;   /* centers vertically */
+  align-items: center;       /* centers horizontally */
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* ✅ Positions */
+.signup-panel {
+  left: 50%;
+}
+
+.login-panel {
+  left: 0;
+}
+
+/* ✅ Ensure active form stays visible and centered */
+.auth-container:not(.login-mode) .signup-panel,
+.auth-container.login-mode .login-panel {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+  z-index: 2;
+  display: flex;              /* ensure it's shown */
+  justify-content: center;
+  align-items: center;
+}
+
+/* ✅ Center form inside panel */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* center inputs horizontally */
+  justify-content: center;    /* center inputs vertically */
+  width: 80%;
+  max-width: 320px;
+  text-align: center;
+  gap: 15px;
+}
+
+
+.form h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 5px;
+}
+.form p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding: 14px 20px;
+  width: 250px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: #fff;
+  background-image: linear-gradient(#fff, #fff),
+    linear-gradient(90deg, #DF0891, #1D1E9D, #631699);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: all 0.3s ease;
+   box-sizing: border-box;
+}
+.form input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(253, 19, 167, 0.5);
+}
+
+.form button {
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login-button {
+  /* background: var(--primary-color); */
+  width: 300px;
+}
+.signup-button {
+  /* background: var(--green-color); */
+  width: 300px;
+}
+.login-button:hover {
+  background: linear-gradient(90deg, #1D1E9D, #631699, #DF0891);
+}
+.signup-button:hover {
+  background: linear-gradient(90deg, #1D1E9D, #631699, #DF0891);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  z-index: 3;
+  border-radius: 12px;
+  transition: transform var(--transition-speed) ease-in-out;
+}
+
+.auth-container.login-mode .overlay {
+  transform: translateX(100%);
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 40px;
+}
+
+.overlay-sub-panel {
+  position: absolute;
+  width: 100%;
+  padding: 0 40px;
+  transition: opacity 0.5s ease-in-out;
+}
+.overlay-sub-panel.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.overlay-sub-panel.show {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.overlay-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+.overlay-content p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.overlay-content button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.overlay-content button:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+.dashboard-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color);
+  color: white;
+  text-align: center;
+}
+
+.dashboard-card {
+  background: white;
+  color: var(--secondary-color);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+.logout-button {
+  background: #ef4444;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.logout-button:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+    max-width: 400px;
+  }
+  .forms-container {
+    position: static;
+    flex-direction: column;
+    height: auto;
+  }
+  .form-panel {
+    position: static;
+    width: 100%;
+    padding: 30px 20px;
+    display: none;
+  }
+  .auth-container:not(.login-mode) .signup-panel,
+  .auth-container.login-mode .login-panel {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .overlay {
+    position: static;
+    width: 100%;
+    height: 250px;
+    transform: none !important;
+    border-radius: 0 0 12px 12px;
+  }
+}
