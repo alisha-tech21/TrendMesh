@@ -1,3 +1,7 @@
+
+
+
+
 # 🚀 TrendMesh
 
 <p align="center">
@@ -17,7 +21,7 @@
 ## 🎥 System Walkthrough & Demo
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/YOUR_TRENDMESH_VIDEO_LINK_HERE" width="85%" controls muted autoplay loop></video>
+  <video src="https://github.com/user-attachments/assets/f0888f78-8198-4047-a06d-e674d9132495" width="85%" controls muted autoplay loop></video>
 </p>
 
 ---
